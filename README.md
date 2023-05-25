@@ -1,2 +1,2 @@
 # poo-php
-vista rapida
+clase rapida con poo y mysql
