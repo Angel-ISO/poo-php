@@ -1,3 +1,11 @@
 <?php
-include_once 'model/index.php';
-$alumn = new persona ('angel grabriel', 23)
+?>
+
+<?php
+
+include_once 'model/productos0.1.php';
+
+include_once 'model/productos.php';
+
+
+
