@@ -16,8 +16,16 @@ $productos=[
         'precio'=>400,
         'disponible'=> false
     ],
+    [
+        'nombre'=>'tv',
+        'precio'=>500,
+        'disponible'=> true
+    ]
 
 ]
+
+
+
 ?>
 
 
@@ -28,11 +36,12 @@ $productos=[
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Productos</title>
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
 </head>
 <body>
     <h1>Productos</h1>
 
-    <table class="table table-bordered">
+    <table class="table">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -42,15 +51,17 @@ $productos=[
         </thead>
         <tbody>
             <?php
-            foreach ($productos as $producto) {
-                echo '<tr>';
-                echo '<td>'. $producto['nombre']. '</td>';
-                echo '<td>'. $producto['precio']. '</td>';
-                echo '<td>'. $producto['disponible']. '</td>';
-                echo '</tr>';
-            }
-           ?>
+            foreach ($productos as $producto):?>
+           <tr>
+                  <td> <?php echo $producto['nombre']; ?> </td>
+                  <td> <?php echo $producto['precio']; ?> </td>
+                  <td> <?php echo $producto['disponible']? 'Disponible': 'no disponible'; ?> </td>
+            </tr>
+            <?php endforeach;?>
+           
         </tbody>
     
 </body>
 </html>
+
+

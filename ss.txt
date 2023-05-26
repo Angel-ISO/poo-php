@@ -1,0 +1,89 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php  
+    class Producto {
+       protected $codigoProd;
+       protected $nombreProd;
+       protected $nombre_corto_prod;
+      
+       public function getcodigo() {return $this->codigoProd; }
+       public function getnombre() {return $this->nombreProd; }
+       public function getnombrecorto() {return $this->nombre_corto_prod; }
+   
+
+       
+       function setCodigo($codigoProd) {$this->codigoProd=$codigoProd; }     
+       function setNombreProd($nombreProd) {$this->nombreProd=$nombreProd; } 
+       function setNombreCortoProd($nombre_corto_prod) {$this->nombre_corto_prod=$nombre_corto_prod; } 
+               
+       public function muestra() {echo "El producto es: ".$this->codigoProd."  ";}
+       
+       public function __construct($row) {
+           $this->codigoProd = $row['codigo'];
+           $this->nombreProd = $row['nombre'];
+           $this->nombre_corto_prod = $row['nombre_corto'];
+       }
+
+   }
+
+   class SubProducto extends Producto {
+       protected $codigo;
+       protected $nombre;
+       protected $PVP;
+       
+       public function getcodigo() {return $this->codigo; }
+       public function getnombre() {return $this->nombre; }
+       public function getPVP() {return $this->PVP; }
+
+       
+       function setCodigo($codigo) {$this->codigo=$codigo; }     
+       function setNombre($nombre) {$this->nombre=$nombre; } 
+       function setPVP($PVP) {$this->PVP=$PVP; } 
+       
+       public function muestraSubProducto() {echo "El SubProducto es: ".$this->codigo." y el precio es: ".$this->PVP."";}
+       
+       public function __construct($producto,$codigo,$nombre,$PVP) {
+           parent::__construct($producto);
+           $this->codigo = $codigo;
+           $this->nombre = $nombre;
+           $this->PVP = $PVP;           
+       }
+   }
+
+
+
+
+
+
+
+
+$producto = array(
+    "codigo" => "P0",
+    "nombre" => "Alimentacion",
+    "nombre_corto" => "ALI",
+);
+$prod1= new Producto($producto);
+
+$subprodA= new SubProducto($producto,'P0-1','Manzanas','12.5');
+$subprodB= new SubProducto($producto,'P0-2','Tomates','6');
+$subprodC= new SubProducto($producto,'P0-3','Arroz','1.5');
+
+$subprodA->muestra();
+$subprodA->muestraSubProducto();
+$subprodB->muestraSubProducto();
+$subprodC->muestraSubProducto();
+
+
